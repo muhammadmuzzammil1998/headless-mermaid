@@ -20,7 +20,7 @@ $ npm install headless-mermaid
 
 `headless-mermaid` uses async and await functionalities to handle interactions. The module can be implemented using `async/await` or by handling the returned `Promise <string>`.
 
-#### execute(code \<string>, config? \<object>, version? \<string>)
+#### execute(code \<string>, config? \<object>, script? \<string>)
 
 The `execute` function takes mermaid code with optional configurations and version number as parameters and on success returns the scalable vector graphic rendered from the mermaid code.
 
@@ -28,9 +28,9 @@ The `execute` function takes mermaid code with optional configurations and versi
 
 The configuration is the same as one you would use in normal `mermaid.initialize()` calls.
 
-#### Version
+#### Script
 
-The `version` parameter defaults to 8.5.2. `headless-mermaid` uses cdnjs to access mermaid API in the template. The version can be changed by setting the `version` parameter to a version supported by cdnjs. You can see the supported versions from [here](https://cdnjs.com/libraries/mermaid/).
+The `script` parameter defaults to `mermaid.min@8.5.2`. `headless-mermaid` uses cdnjs to access mermaid API in the template. The script and version can be adjusted with a script identifier as `<filename[.js]>@<version>`. The `.js` in file name is optional. This parameter can only be changed to a version supported by cdnjs. You can see the supported file names and versions from [here](https://cdnjs.com/libraries/mermaid/).
 
 ### Example of usage
 
@@ -59,7 +59,7 @@ Alice->John: Yes... John, how are you?`;
 
 // Use try...catch to handle error
 (async () => {
-  let svg = await mermaid.execute(code, config); // execute(code, config, "8.5.0"); to use version 8.5.0.
+  let svg = await mermaid.execute(code, config); // execute(code, config, "mermaid@8.5.0"); to use mermaid.js from version 8.5.0.
   fs.writeFileSync("output.svg", svg);
 })();
 ```
