@@ -1,13 +1,24 @@
 const puppeteer = require("puppeteer");
 
-async function execute(code, config = {}, version = "8.5.2") {
-  let browser = await puppeteer.launch({ args: ["--no-sandbox"] });
-  if (version.split(".").length < 3)
-    throw "Invalid version number. Please see: https://github.com/muhammadmuzzammil1998/headless-mermaid#calling-the-api";
+const SCRIPT_ERROR =
+  "Invalid script identifier. Please see: https://github.com/muhammadmuzzammil1998/headless-mermaid#calling-the-api";
+
+async function execute(code, config = {}, script = "mermaid.min@8.5.2") {
+  let browser = await puppeteer.launch({ args: ["--no-sandbox"] }),
+    scriptData = script.split("@").map((x) => x.trim());
+  if (scriptData.filter((x) => x != "").length < 2) {
+    throw SCRIPT_ERROR;
+  }
+  let filename = scriptData[0],
+    version = scriptData[1];
+  if (version.split(".").length < 3) {
+    throw SCRIPT_ERROR;
+  }
+  if (!filename.endsWith(".js")) filename += ".js";
   try {
     let page = await browser.newPage();
     await page.goto(
-      `data:text/html,<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/${version}/mermaid.min.js"></script><div id="mermaid">${code}</div>`
+      `data:text/html,<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/${version}/${filename}"></script><div id="mermaid">${code}</div>`
     );
     await page.$eval(
       "#mermaid",
