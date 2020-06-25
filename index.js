@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 async function execute(code, config = {}, version = "8.5.2") {
   let browser = await puppeteer.launch({ args: ["--no-sandbox"] });
   if (version.split(".").length < 3)
-    "Invalid version number. Please see: https://github.com/muhammadmuzzammil1998/headless-mermaid#calling-the-api";
+    throw "Invalid version number. Please see: https://github.com/muhammadmuzzammil1998/headless-mermaid#calling-the-api";
   try {
     let page = await browser.newPage();
     await page.goto(
