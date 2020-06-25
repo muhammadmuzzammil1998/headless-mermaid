@@ -1,0 +1,25 @@
+{
+  "name": "headless-mermaid",
+  "version": "1.0.0",
+  "description": "A mermaid.js handler for server-side rendering.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammadmuzzammil1998/headless-mermaid.git"
+  },
+  "keywords": [
+    "mermaidjs",
+    "headless",
+    "render"
+  ],
+  "author": "Muhammad Muzzammil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muhammadmuzzammil1998/headless-mermaid/issues"
+  },
+  "homepage": "https://github.com/muhammadmuzzammil1998/headless-mermaid#readme",
+  "dependencies": {
+    "puppeteer": "^4.0.1"
+  }
+}
