@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/muhammadmuzzammil1998/headless-mermaid#readme",
   "dependencies": {
-    "puppeteer": "^4.0.1"
+    "puppeteer": "^5.0.0"
   }
 }
