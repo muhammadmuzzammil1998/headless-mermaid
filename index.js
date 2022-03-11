@@ -29,7 +29,7 @@ async function execute(
       (config, code, diagramId) => {
         window.mermaid.initialize(config)
         try {
-          const svgCode = window.mermaidnpm.mermaidAPI.render(diagramId, code)
+          const svgCode = window.mermaid.mermaidAPI.render(diagramId, code)
           return { status: "success", svgCode }
         } catch (error) {
           return { status: "error", error, message: error.message }
